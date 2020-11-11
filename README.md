@@ -48,14 +48,6 @@ Start server at port 3000
 - [Python](https://www.python.org/)
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
-
-[//]: #![LiveDemoLink](https://livedemo.com)
-
-
-## Code of Conduct
-Refer to our [CODE_OF_CONDUCT.md](https://github.com/dotrachit/summit/blob/main/CODE_OF_CONDUCT.md)
-
-
 ## License
 
 This project is licensed under [GPL-3.0 License](./LICENSE) .
