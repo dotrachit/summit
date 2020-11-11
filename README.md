@@ -1,34 +1,16 @@
-# Summit
+![summit](https://socialify.git.ci/dotrachit/summit/image?description=1&descriptionEditable=Read%20less%20%F0%9F%93%9A%20Learn%20more%20%F0%9F%A4%93&font=Raleway&language=1&logo=https%3A%2F%2Fcamo.githubusercontent.com%2F3a4e50d59c856d1b01c87c0854e6e229b103903d4f7b07a8659f3b60ae87d7f9%2F68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3737333430393334323538353936323439372f3737353236373633373936393238393232362f6d6f756e7461696e732e706e67&pattern=Charlie%20Brown&theme=Light)
 
-<p>
-<img src="https://img.shields.io/github/issues/dotrachit/summit">
-<img src="https://img.shields.io/github/forks/dotrachit/summit">
-<img src="https://img.shields.io/github/stars/dotrachit/summit">
-<img src="https://img.shields.io/github/license/dotrachit/summit">
-<img src="https://img.shields.io/github/contributors/dotrachit/summit"></p>
+Ever felt that you're running short on time? Don't waste your time reading lengthy unimportant parts of a blog. **Summit summarizes lengthy blog posts for you.**
 
-[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+We use an NLP based approach to predict the importance of each word of a sentence and accordingly manipulate the results.
 
-## What is Summit? 📝
-An open source project to help summarise text or voice inputs.
+## Usage
+* Head over to https://summit-mlh.vercel.app/.
+* Enter a medium URL of the format `https://medium.com/@<username>/<story-id>`.
+* Click on submit and enjoy your summarized blog post!
+* You can also scroll down to explore randomly fetched summarized Medium blog posts.
 
-## Why use Summit? 🤔
-<b>Meetings, recordings, speeches, essays, anything too much information can always get boring! Would it not be awesome to know the summary and the keypoints only?</b>
-* An average human being has an attention span of <b>8 seconds</b> only. As such for meetings, or recorded videos, it becomes pretty tedious to listen for hours. 
-* When the meeting is important, this becomes a grave issue, because it's just obvious that one might miss essential points.
-* For long texts, or essays, summarisation is an important technique, since it gives you the required points only.
-
-## How to use Summit 💡
-* We give you <b>Summit</b> a fully automated and ML powered website, that can listen to your audio, or take text inputs and then summarise.
-* With Summit, you can get done with all the attention span, or excessive information issues, and have an awesome expereince.
-
-## USP 🎉
-This will be the first *Open Source* project of it's kind. It'll also be easily accessible to everyone and applicable in a wide variety of scenarios as mentioned already.
-
-## Getting Started 🏁
+## Development
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing
 purposes.
@@ -44,59 +26,36 @@ You need `node` and `npm` installed on your system to be able to run and build t
 In order to install and run this project follow the below steps
 
 * Clone this project
+```bash
+git clone https://github.com/dotrachit/summit.git && cd summit
+```
 * Run following command on terminal/cmd/shell in the project folder
 
 ```bash
 npm install
 ```
-### Run project in production mode
+### Run project
 
-Generate the dist files and then start server at port 3000
+Start server at port 3000
 
 ```bash
-  npm run build
   npm start
 ```
 
-## Tech Stack 🛠
+## Stack 
 
 - [ReactJS](https://reactjs.org/)
 - [Python](https://www.python.org/)
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
 
-<!--## Live Demo
-We'll make a setup_instructions.md later on!
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Installation
-
-### Deployment
--->
-
-
 [//]: #![LiveDemoLink](https://livedemo.com)
 
-## Contribute 🤝
-All kinds of contributions, issues, and feature requests are welcome!
 
 ## Code of Conduct
-* Be considerate, respectful and collaborative.
-* Refrain from demeaning, discriminatory or harassing behavior and speech.
-* Be mindful of your surroundings and of your fellow participants. Your fellow participants may have a different level of comfort with respect to language and personal space.
+Refer to our [CODE_OF_CONDUCT.md](https://github.com/dotrachit/summit/blob/main/CODE_OF_CONDUCT.md)
 
-## Show your support ⭐️
-Give it a *star* if you like this project!
 
-## Acknowledgments 🙏🏻
-* [Major League Hacking](https://mlh.io/) for giving us this opportunity.
-
-## License 🗒️
+## License
 
 This project is licensed under [GPL-3.0 License](./LICENSE) .
