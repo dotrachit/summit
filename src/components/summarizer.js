@@ -39,7 +39,7 @@ function Summarizer() {
                         console.log("the status is: " + cardData.status);
                         console.log('the final data is: ' + finalData)
                         let data = JSON.stringify({ data: cardData.content });
-                        axios.post('http://mlh-summarizer.herokuapp.com/', data, { headers: { "Content-Type": "application/json" } })
+                        axios.post('https://cors-anywhere.herokuapp.com/http://mlh-summarizer.herokuapp.com/', data, { headers: { "Content-Type": "application/json" } })
                             .then(response => {
                                 setSummarizedData({
                                     content: response.data,
