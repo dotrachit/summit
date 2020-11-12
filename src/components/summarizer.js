@@ -14,8 +14,10 @@ function Summarizer() {
     let inputURL = '';
     const submitHandler = (e) => {
         e.preventDefault()
-        if (link.startsWith('https://medium.com/')) {
+        if (link.startsWith('https://medium.com/@')) {
             link = link.replace('https://medium.com/', '')
+        } else {
+            alert('The format of the link should be https://medium.com/@<username>/<post-id>')
         }
         forwardSlashIndex = link.indexOf('/')
         personUsername = link.slice(1, forwardSlashIndex)
