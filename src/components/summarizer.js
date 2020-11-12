@@ -37,7 +37,7 @@ function Summarizer() {
                             content: (finalData[i].content).replace(/"/g, "").replace(/“/g, "").replace(/”/g, "")
                         });
                         let data = JSON.stringify({ data: cardData.content });
-                        axios.post('http://mlh-summarizer.herokuapp.com/', data, { headers: { "Content-Type": "application/json" } })
+                        axios.post('https://cors-anywhere.herokuapp.com/http://mlh-summarizer.herokuapp.com/', data, { headers: { "Content-Type": "application/json" } })
                             .then(response => {
                                 setSummarizedData({
                                     content: response.data,
