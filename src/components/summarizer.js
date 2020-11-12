@@ -36,8 +36,6 @@ function Summarizer() {
                             title: finalData[i].title,
                             content: (finalData[i].content).replace(/"/g, "").replace(/“/g, "").replace(/”/g, "")
                         });
-                        console.log("the status is: " + cardData.status);
-                        console.log('the final data is: ' + finalData)
                         let data = JSON.stringify({ data: cardData.content });
                         axios.post('http://mlh-summarizer.herokuapp.com/', data, { headers: { "Content-Type": "application/json" } })
                             .then(response => {
@@ -55,13 +53,12 @@ function Summarizer() {
             .catch(err => console.log(err));
     }
 
-
     return (
         <div className="App">
             <Container className="align-items-left">
                 <Form onSubmit={submitHandler}>
                     <InputGroup className="mb-3 mt-5" size="lg" type="submit">
-                        <FormControl id="basic-url" aria-describedby="basic-addon3" type="text" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Enter the Medium blog link here" />
+                        <FormControl id="basic-url" aria-describedby="basic-addon3" type="url" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Enter the Medium blog link here" />
                         <InputGroup.Append>
                             <Button type="submit" variant="dark">Submit</Button>
                         </InputGroup.Append>
@@ -75,7 +72,7 @@ function Summarizer() {
                         <Card.Text>
                             {summarizedData.status === 200 ? summarizedData.content : "This is where you'll see your summarized content!"}
                         </Card.Text>
-                        <Button variant="dark" href="#">Check original blog</Button>
+                        {summarizedData.status === 200 ? <Button href={link} variant="dark" target="_blank">Check original blog</Button> : ''}
                     </Card.Body>
                 </Card>
             </Container>
