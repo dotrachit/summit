@@ -69,7 +69,7 @@ function Summarizer() {
                 </Form>
                 <Card className="text-md-left">
                     <Card.Header as="h5">
-                        {cardData.status === "ok" ? cardData.title : "Heading"}
+                        {summarizedData.status === 200 ? cardData.title : "Heading"}
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>
