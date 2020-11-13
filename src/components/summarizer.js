@@ -1,6 +1,7 @@
 import { Card, Button, InputGroup, FormControl, Form } from 'react-bootstrap';
 import { Container } from 'reactstrap';
 import React, { useState } from 'react'
+import Blog from './blog';
 
 function Summarizer() {
     const [mediumData, setMediumData] = useState([]);
@@ -8,12 +9,13 @@ function Summarizer() {
     let [link, setLink] = useState('');
     const [cardData, setCardData] = useState({});
     const [summarizedData, setSummarizedData] = useState({});
+    const [displayInt, setDisplayInt] = useState({ blogInt: 0 });
     const axios = require('axios');
     let personUsername = '';
     let forwardSlashIndex = 0;
     let inputURL = '';
     const submitHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (link.startsWith('https://medium.com/@')) {
             link = link.replace('https://medium.com/', '')
         } else {
@@ -32,6 +34,11 @@ function Summarizer() {
                 const finalData = response.items.slice(0, 6);
                 for (var i in finalData) {
                     if (finalData[i].link.startsWith(inputURL)) {
+                        setDisplayInt({
+                            blogInt: 1
+                        });
+                        console.log("blog int: " + displayInt.blogInt)
+                        console.log("outputInt: " + displayInt.outputCardInt)
                         setCardData({
                             url: inputURL,
                             status: finalData.status,
@@ -66,17 +73,24 @@ function Summarizer() {
                         </InputGroup.Append>
                     </InputGroup>
                 </Form>
-                <Card className="text-md-left">
-                    <Card.Header as="h5">
-                        {summarizedData.status === 200 ? cardData.title : "Heading"}
-                    </Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            {summarizedData.status === 200 ? summarizedData.content : "This is where you'll see your summarized content!"}
-                        </Card.Text>
-                        {summarizedData.status === 200 ? <Button href={link} variant="dark" target="_blank">Check original blog</Button> : ''}
-                    </Card.Body>
-                </Card>
+                {displayInt.blogInt === 1 ?
+                    <Card className="text-md-left">
+                        <Card.Header as="h5">
+                            {summarizedData.status === 200 ? cardData.title : "Heading"}
+                        </Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                {summarizedData.status === 200 ? summarizedData.content : "This is where you'll see your summarized content!"}
+                            </Card.Text>
+                            {summarizedData.status === 200 ? <div>
+                                <Button className="mx-1" variant="outline-dark" href="/">Go back to home</Button>
+                                <Button href={link} variant="dark" target="_blank" className="mx-1">Check original blog</Button>
+                            </div> : null}
+                        </Card.Body>
+                    </Card>
+
+                    : null}
+                {cardData === {} ? null : displayInt.blogInt === 0 ? <Blog /> : null}
             </Container>
         </div >
     );
