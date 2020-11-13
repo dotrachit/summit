@@ -69,44 +69,44 @@ const Blog = () => {
         link = mediumLink
         setEmptyRandomFetcher(1)
         if (link.startsWith('https://medium.com/@')) {
-            link = link.replace('https://medium.com/', '')
-        } else {
-            alert('The format of the link should be https://medium.com/@<username>/<post-id>')
-        }
-        forwardSlashIndex = link.indexOf('/')
-        personUsername = link.slice(1, forwardSlashIndex)
-        console.log("the username of the blog's author is: " + personUsername)
-        inputURL = `https://medium.com/${link}`
-        console.log("the URL of the blog being summarized is: " + inputURL)
-        fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${personUsername}`)
-            .then(res => res.json())
-            .then(response => {
-                setMediumData(response.items);
-                setIsLoading(false);
-                const finalData = response.items.slice(0, 6);
-                for (var i in finalData) {
-                    if (finalData[i].link.startsWith(inputURL)) {
-                        setCardData({
-                            url: inputURL,
-                            status: finalData.status,
-                            title: finalData[i].title,
-                            content: (finalData[i].content).replace(/"/g, "").replace(/“/g, "").replace(/”/g, "")
-                        });
-                        let data = JSON.stringify({ data: cardData.content });
-                        axios.post(`https://cors-anywhere.herokuapp.com/http://mlh-summarizer.herokuapp.com/${summaryLength}`, data, { headers: { "Content-Type": "application/json" } })
-                            .then(response => {
-                                _setSummarizedData({
-                                    content: response.data,
-                                    status: response.status
+            link = link.replace('https://medium.com/', '');
+            forwardSlashIndex = link.indexOf('/')
+            personUsername = link.slice(1, forwardSlashIndex)
+            console.log("the username of the blog's author is: " + personUsername)
+            inputURL = `https://medium.com/${link}`
+            console.log("the URL of the blog being summarized is: " + inputURL)
+            fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${personUsername}`)
+                .then(res => res.json())
+                .then(response => {
+                    setMediumData(response.items);
+                    setIsLoading(false);
+                    const finalData = response.items.slice(0, 6);
+                    for (var i in finalData) {
+                        if (finalData[i].link.startsWith(inputURL)) {
+                            setCardData({
+                                url: inputURL,
+                                status: finalData.status,
+                                title: finalData[i].title,
+                                content: (finalData[i].content).replace(/"/g, "").replace(/“/g, "").replace(/”/g, "")
+                            });
+                            let data = JSON.stringify({ data: cardData.content });
+                            axios.post(`https://cors-anywhere.herokuapp.com/http://mlh-summarizer.herokuapp.com/${summaryLength}`, data, { headers: { "Content-Type": "application/json" } })
+                                .then(response => {
+                                    _setSummarizedData({
+                                        content: response.data,
+                                        status: response.status
+                                    })
                                 })
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });;
+                                .catch(error => {
+                                    console.log(error);
+                                });;
+                        }
                     }
-                }
-            })
-            .catch(err => console.log(err));
+                })
+                .catch(err => console.log(err));
+        } else {
+            alert('OOPSIE WOOPSIE!! Uwu We made a yucky wucky!! A wittle yucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!');
+        }
     }
 
     useEffect(() => {
@@ -160,7 +160,7 @@ const Blog = () => {
                                 {_summarizedData.status === 200 ? _summarizedData.content : "This is where you'll see your summarized content!"}
                             </Card.Text>
                             {_summarizedData.status === 200 ? <div>
-                                <Button className="mx-1" variant="outline-dark" href="/">Go back to home</Button>
+                                <Button className="mx-1" variant="dark" href="/">Go back to home</Button>
                             </div> : null}
                         </Card.Body>
                     </Card>
